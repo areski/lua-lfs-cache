@@ -2,11 +2,11 @@
 -- Easily power a caching system based on Filesystem
 -- It's recommended to use ramdisk to get better performances
 -- @ mkdir -p /tmp/ram
--- @sudo mount -t tmpfs -o size=512M tmpfs /tmp/ram/
+-- @ sudo mount -t tmpfs -o size=512M tmpfs /tmp/ram/
 -- Set the CACHE_DIRECTORY setting to this directory
 --
 --
--- Copyright (C) 2012 Arezqui Belaid <areski@gmail.com>
+-- Copyright (C) 2013 Arezqui Belaid <areski@gmail.com>
 --
 -- Permission is hereby granted, free of charge, to any person
 -- obtaining a copy of this software and associated documentation files
