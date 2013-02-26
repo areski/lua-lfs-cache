@@ -22,6 +22,18 @@ It's recommended to use ramdisk to get better performances::
 Set the CACHE_DIRECTORY setting to the directory /tmp/ram/
 
 
+Dependencies
+------------
+
+lua-lfs-cache depends of those following lua packages::
+
+    lfs
+    md5
+    loop
+
+You can easily install those dependencies with luarocks.
+
+
 Feedback
 --------
 
