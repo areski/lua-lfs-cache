@@ -4,8 +4,7 @@ lua-lfs-cache
 =============
 
 :Author: Arezqui Belaid
-:Description: Easily power a caching system based on Filesystem with Lua
-:Company: Developed by Star2Billing http://www.star2billing.com
+:Description: Library to power a caching system based on Filesystem
 :License: MIT
 
 
