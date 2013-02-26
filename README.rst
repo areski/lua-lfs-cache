@@ -12,7 +12,14 @@ lua-lfs-cache
 Lua Filesystem Caching helper
 =============================
 
-lua-lfs-cache is a library to power a caching based on Filesystem
+lua-lfs-cache is a library to power a caching based on Filesystem.
+
+It's recommended to use ramdisk to get better performances::
+
+    mkdir -p /tmp/ram
+    mount -t tmpfs -o size=512M tmpfs /tmp/ram/
+
+Set the CACHE_DIRECTORY setting to the directory /tmp/ram/
 
 
 Feedback
