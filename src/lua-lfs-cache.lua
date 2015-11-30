@@ -28,26 +28,21 @@ local PKG_EMAIL = 'areski@gmail.com'
 local PKG_VERSION = '0.1.0-1'
 
 
-require "lfs"
-require "md5"
-local oo = require "loop.simple"
-local inspect = require 'inspect'
+local lfs = require "lfs"
+local md5 = require "md5"
 
 
-CACHE_DIRECTORY = '/tmp'
-
-
-
-LFS_Caching = oo.class{
+local LFS_Caching = {
     -- default field values
     debugger = nil,
+    CACHE_DIRECTORY = '/tmp',
 }
 
-function LFS_Caching:__init(debugger)
-    -- self is the class
-    return oo.rawnew(self, {
-        debugger = debugger,
-    })
+function LFS_Caching:new (o)
+    o = o or {}   -- create object if user does not provide one
+    setmetatable(o, self)
+    self.__index = self
+    return o
 end
 
 --
@@ -64,7 +59,7 @@ end
 --
 -- return a md5 file for the caching
 function LFS_Caching:key_filepath(key)
-    return CACHE_DIRECTORY..'/'..md5.sumhexa(key)
+    return self.CACHE_DIRECTORY..'/'..md5.sumhexa(key)
 end
 
 
@@ -83,6 +78,7 @@ end
 --
 -- Write content to file
 function LFS_Caching:write_to_file(path, content)
+    local content = tostring(content)
     local file = io.open(path, "w")
     file:write(content)
     file:close()
@@ -119,31 +115,4 @@ function LFS_Caching:get(key, ttl)
     return result
 end
 
-
---
--- run test
---
-if false then
-
-    caching = LFS_Caching(nil)
-
-    local cmsgpack = require 'cmsgpack'
-    local inspect = require 'inspect'
-
-    value_test = {}
-    value_test["1"] = "Orange"
-    value_test["2"] = "Apple"
-    value_test["3"] = "Carrot"
-
-    msgpack = cmsgpack.pack(value_test)
-    print(msgpack)
-
-    print("Test Get Cache")
-    res = caching:get('hashkeydb', 3)
-    if not(res) then
-        print("Set Cache")
-        caching:set('hashkeydb', msgpack)
-    else
-        print(inspect(cmsgpack.unpack(res)))
-    end
-end
+return LFS_Caching
