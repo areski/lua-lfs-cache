@@ -28,11 +28,11 @@ Set the CACHE_DIRECTORY setting to the directory /tmp/ram/
 Dependencies
 ------------
 
-lua-lfs-cache depends of those following lua packages::
+lua-lfs-cache have the following Lua dependecies:
 
-    lfs
-    md5
-    loop
+* lfs
+* md5
+* loop
 
 You can easily install those dependencies with luarocks.
 
