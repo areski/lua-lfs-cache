@@ -32,7 +32,6 @@ lua-lfs-cache have the following Lua dependecies:
 
 * lfs
 * md5
-* loop
 
 You can easily install those dependencies with luarocks.
 
